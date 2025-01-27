@@ -12,17 +12,29 @@ class CirculaSignUpPage {
 
     async setupAndSelectCountry(country) {
         await this.gotoSignUpPage();
-        await this.page.locator(signupLocators.emailInput).fill('muhammadrafay+911@live.co.uk');;
-        await this.page.locator(signupLocators.passwordInput).fill('abcd1234');
+        await this.firstStepPage('muhammadrafay@live.co.uk', 'abcd1234');
+        await this.secondStepPage('Muhammad', 'Rafay', '12345678');
+        return await this.finalStepPage('QA Test', country);
+    }
+
+    async firstStepPage(email, pass) {
+        await this.page.locator(signupLocators.emailInput).fill(email);;
+        await this.page.locator(signupLocators.passwordInput).fill(pass);
         await this.page.locator(signupLocators.termsAndConditions).click({ force: true });
         await this.page.locator(signupLocators.tryForFreeButton).click();
 
-        await this.page.locator(signupLocators.firstName).fill('Muhammad');;
-        await this.page.locator(signupLocators.lastName).fill('Rafay');
-        await this.page.locator(signupLocators.mobileNumber).fill('123456789');
+    }
+
+    async secondStepPage(firstName, lastName, number) {
+        await this.page.locator(signupLocators.firstName).fill(firstName);;
+        await this.page.locator(signupLocators.lastName).fill(lastName);
+        await this.page.locator(signupLocators.mobileNumber).fill(number);
         await this.page.locator(signupLocators.nextStepButton).click();
         
-        await this.page.locator(signupLocators.companyName).fill('QA test');
+    }
+
+    async finalStepPage(companyName, country) {
+        await this.page.locator(signupLocators.companyName).fill(companyName);
         const countryInput = this.page.locator(signupLocators.ddCountry);
         await countryInput.fill(country);
         const selectedValue = await countryInput.inputValue();
