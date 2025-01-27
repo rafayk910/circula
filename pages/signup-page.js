@@ -12,20 +12,17 @@ class CirculaSignUpPage {
 
     async setupAndSelectCountry(country) {
         await this.gotoSignUpPage();
-
         await this.page.locator(signupLocators.emailInput).fill('muhammadrafay+911@live.co.uk');;
         await this.page.locator(signupLocators.passwordInput).fill('abcd1234');
-
-        const termsAndConditionsCheck = this.page.locator(signupLocators.termsAndConditions);
-        await termsAndConditionsCheck.click({ force: true });
-
+        await this.page.locator(signupLocators.termsAndConditions).click({ force: true });
         await this.page.locator(signupLocators.tryForFreeButton).click();
+
         await this.page.locator(signupLocators.firstName).fill('Muhammad');;
         await this.page.locator(signupLocators.lastName).fill('Rafay');
         await this.page.locator(signupLocators.mobileNumber).fill('123456789');
         await this.page.locator(signupLocators.nextStepButton).click();
+        
         await this.page.locator(signupLocators.companyName).fill('QA test');
-
         const countryInput = this.page.locator(signupLocators.ddCountry);
         await countryInput.fill(country);
         const selectedValue = await countryInput.inputValue();
