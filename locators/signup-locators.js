@@ -1,0 +1,15 @@
+exports.signupLocators = {
+emailInput: '//*[@id="textfield-:Rqikmm:"]',
+passwordInput: '//*[@id="textfield-:R3aikmm:"]',
+termsAndConditions: "//label[contains(., 'I agree to the')] /input[@type='checkbox']",
+tryForFreeButton: "//button[contains(text(), 'Try for free')]",
+firstName: '//*[@id="textfield-:r0:"]',
+lastName: '//*[@id="textfield-:r1:"]',
+mobileNumber: '//*[@id="textfield-:r2:"]',
+nextStepButton: "//button[contains(text(), 'Next step')]",
+companyName: '//*[@id="textfield-:r3:"]',
+ddCountry: "//input[@name='country']",
+ddHowYouHear: "//input[@name='hdyhau']",
+btnCreateAccount: "//button[contains(text(), 'Create an account')]",
+successfulSignUp: "//div[contains(text(), 'Great! Now please verify your email')]",
+}
