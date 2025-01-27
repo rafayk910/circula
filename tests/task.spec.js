@@ -11,7 +11,7 @@ test.describe('Dropdown functionality tests', () => {
     test('Verify user can select Sweden from the dropdown', async () => {
         const selectedValue = await circulaSignUp.setupAndSelectCountry('Sweden')
 
-        expect(selectedValue).toBe('Sweden')
+        expect(selectedValue).toEqual('Sweden')
     });
 
     test('Verify successful form submission with Sweden selected', async () => {
@@ -20,6 +20,6 @@ test.describe('Dropdown functionality tests', () => {
         await circulaSignUp.clickCreateAccount();
 
         const successMessage = await circulaSignUp.verifySuccessMessage();
-        expect(successMessage).toBe('Great! Now please verify your email');
+        expect(successMessage).toEqual('Great! Now please verify your email');
     });
 });
